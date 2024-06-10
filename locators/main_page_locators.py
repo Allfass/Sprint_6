@@ -24,3 +24,6 @@ class MainPageLocators():
 
     eighth_question = [By.XPATH, "//div[@id='accordion__heading-7']"]
     eighth_answer = [By.XPATH, "//div[@id='accordion__panel-7']"]
+
+    main_page_link = [By.XPATH, "//a[@href='/']"]
+    yandex_page_link = [By.XPATH, "//a[@href='//yandex.ru']"]

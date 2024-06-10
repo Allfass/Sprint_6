@@ -17,7 +17,9 @@ class OrderPageLocators():
     checkbox_black_pearls = [By.XPATH, "//input[@id='black']"]
     checkbox_gray_despair = [By.XPATH, "//input[@id='grey']"]
     order_button = [By.XPATH, "//button[contains(text(), 'Заказать') and contains(@class, 'Button_Middle__1CSJM')]"]
-    
+    accept_order_button = [By.XPATH, "//button[contains(text(), 'Да')]"]
+    decline_order_button = [By.XPATH, "//button[contains(text(), 'Да')]"]
+    compete_order_message = [By.XPATH, "//div[contains(text(), 'Заказ оформлен')]"]
     
     def get_previous_day():
         now = datetime.date.today()-datetime.timedelta(1)
