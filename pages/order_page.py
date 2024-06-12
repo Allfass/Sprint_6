@@ -12,7 +12,7 @@ class OrderPage(OrderPageLocators):
         WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(self.name_input))
 
     def input_name(self, name):
-        self.driver.find_element(*self.input_name).send_keys(name)
+        self.driver.find_element(*self.name_input).send_keys(name)
 
     def input_surname(self, surname):
         self.driver.find_element(*self.surname_input).send_keys(surname)
@@ -24,20 +24,17 @@ class OrderPage(OrderPageLocators):
         self.driver.find_element(*self.phone_input).send_keys(phone)
 
     def select_metro(self, metro_number_in_order):
-        element = self.driver.find_element(*self.metro_input)
-        self.driver.execute_script("arguments[0].click();", element)
-        element = self.driver.find_element(*self.select_metro_subinput(metro_number_in_order))
-        self.driver.execute_script("arguments[0].click();", element)
+        self.driver.find_element(*self.metro_input).click()
+        self.driver.find_element(*self.select_metro_subinput(metro_number_in_order)).click()
 
     def click_further_order_button(self):
-        element = self.driver.find_element(*self.further_button)
-        self.driver.execute_script("arguments[0].click();", element)
+        element = self.driver.find_element(*self.further_button).click()
 
-    def check_compete_first_step_of_order(self):
-        self.driver.find_element(*self.date_input)
-
-    def wait_for_load_main_page(self):
+    def wait_for_load_second_order_page(self):
         WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(self.date_input))
+
+    def check_complete_first_step_of_order(self):
+        return self.driver.find_element(*self.date_input)
     
     def click_date_input_button(self):
         element = self.driver.find_element(*self.date_input)
@@ -52,8 +49,7 @@ class OrderPage(OrderPageLocators):
         self.driver.execute_script("arguments[0].click();", element)
 
     def click_rental_period_button(self):
-        element = self.driver.find_element(*self.rental_period_input)
-        self.driver.execute_script("arguments[0].click();", element)
+        self.driver.find_element(*self.rental_period_input).click()
 
     def click_one_day_rental_period_button(self):
         element = self.driver.find_element(*self.rental_period_dropdown_day)
@@ -88,4 +84,4 @@ class OrderPage(OrderPageLocators):
         self.driver.execute_script("arguments[0].click();", element)
         
     def check_compete_order_message(self):
-        self.driver.find_element(*self.compete_order_message)
+        return self.driver.find_element(*self.compete_order_message)
