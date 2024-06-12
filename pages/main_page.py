@@ -11,6 +11,9 @@ class MainPage(MainPageLocators):
     def wait_for_load_main_page(self):
         WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(self.first_question))
 
+    def check_main_page_load(self):
+        return self.driver.find_element(*self.first_question)
+
     def click_on_first_question(self):
         element = self.driver.find_element(*self.first_question)
         self.driver.execute_script("arguments[0].click();", element)
@@ -66,4 +69,10 @@ class MainPage(MainPageLocators):
 
     def check_eighth_answer_visiable(self):
         self.driver.find_element(*self.eighth_question).get_attribute("hidden")
+
+    def click_on_main_page_link(self):
+        self.driver.find_element(*self.main_page_link).click()
+
+    def click_on_yandex_page_link(self):
+        self.driver.find_element(*self.yandex_page_link).click()
     

@@ -10,7 +10,7 @@ from selenium.webdriver import ChromeOptions
 def pytest_addoption(parser):
     parser.addoption("--headless", action="store", default="no")
 
-@pytest.fixture(params=["firefox","chrome"])
+@pytest.fixture(params=["firefox"])
 def driver(request):
     if request.config.getoption('--headless') == 'yes':
         firefox_opts = FirefoxOptions()

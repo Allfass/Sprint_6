@@ -28,7 +28,8 @@ class OrderPage(OrderPageLocators):
         self.driver.find_element(*self.select_metro_subinput(metro_number_in_order)).click()
 
     def click_further_order_button(self):
-        element = self.driver.find_element(*self.further_button).click()
+        element = self.driver.find_element(*self.further_button)
+        self.driver.execute_script("arguments[0].click();", element)
 
     def wait_for_load_second_order_page(self):
         WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(self.date_input))
