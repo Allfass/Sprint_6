@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-import datetime
 
 class OrderPageLocators():
     
@@ -20,29 +19,6 @@ class OrderPageLocators():
     accept_order_button = [By.XPATH, "//button[contains(text(), 'Да')]"]
     decline_order_button = [By.XPATH, "//button[contains(text(), 'Нет')]"]
     compete_order_message = [By.XPATH, "//div[contains(text(), 'Заказ оформлен')]"]
-    
-    def get_previous_day(self):
-        now = datetime.date.today()-datetime.timedelta(1)
-        previous_day = now.day
-        if 0 < now.day < 10:
-            previous_day = f"0{str(now.day)}"
-        else:
-            previous_day = str(now.day)
-        return [By.XPATH, f"//div[contains(text(),{previous_day}) and contains(@class,'react-datepicker__day--0{previous_day}')]"]
-
-    def get_next_day(self):
-        now = datetime.date.today()+datetime.timedelta(1)
-        next_day = now.day
-        if 0 < now.day < 10:
-            next_day = f"0{str(now.day)}"
-        else:
-            next_day = str(now.day)
-        return [By.XPATH, f"//div[contains(text(),{next_day}) and contains(@class,'react-datepicker__day--0{next_day}')]"]
-
-    def select_metro_subinput(self, metro_number):
-        if 0 < metro_number < 238:
-            metro_subinput = [By.XPATH, f"//button[@value={metro_number}]"]
-            return metro_subinput
-        else:
-            raise(RuntimeError(f'The passed value {metro_number} does not exist'))
-        
+    previous_day_template = [By.XPATH, "//div[contains(text(),???) and contains(@class,'react-datepicker__day--0???')]"]
+    next_day_template = [By.XPATH, "//div[contains(text(),???) and contains(@class,'react-datepicker__day--0???')]"]
+    metro_subinput_template = [By.XPATH, "//button[@value=???]"]
