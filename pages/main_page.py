@@ -18,4 +18,11 @@ class MainPage(Page):
     @allure.step('Проверяем наличие атрибута "hidden" у элемента')
     def check_is_answer_hidden(self, answer_locator):
         return super().get_element_attribute(answer_locator, "hidden")
-    
+
+    @allure.step('Нажимаем на ссылка на главную страницу')
+    def click_on_main_page_link(self):
+        super().click_on_element_with_javascript(self.main_page_locators.main_page_link)
+
+    @allure.step('Нажимаем на ссылка на страницу яндекс')  
+    def click_on_yandex_page_link(self):
+        super().click_on_element_with_javascript(self.main_page_locators.yandex_page_link)

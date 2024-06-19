@@ -1,5 +1,4 @@
 from pages.main_page import MainPage
-from locators.main_page_locators import MainPageLocators
 from tests.constants import TestConstants
 from pages.yandex_page import YandexPage
 import pytest
@@ -13,7 +12,7 @@ class TestTransitions():
         main_page = MainPage(self.driver, TestConstants.main_url)
         main_page.load_page()
         main_page.wait_for_load_main_page()
-        main_page.click_on_element_with_javascript(MainPageLocators.main_page_link)
+        main_page.click_on_main_page_link()
         assert main_page.check_main_page_load() is not None
 
     @allure.title('Проверка перехода на страницу yandex')
@@ -22,7 +21,7 @@ class TestTransitions():
         main_page = MainPage(self.driver, TestConstants.main_url)
         main_page.load_page()
         main_page.wait_for_load_main_page()
-        main_page.click_on_element_with_javascript(MainPageLocators.main_page_link)
+        main_page.click_on_yandex_page_link()
         yandex_page = YandexPage(self.driver)
         yandex_page.swith_to_new_tab()
         yandex_page.wait_for_load_page()
